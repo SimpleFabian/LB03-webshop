@@ -1,2 +1,7 @@
-C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\WelcomeController.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\repository\ArtikelRepository.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\model\ElasticSearchEntity.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\controller\ArtikelController.java
 C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\SpringBootWebApplication.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\repository\ArtikelConverter.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\model\Artikel.java
+C:\Users\Lenovo\git\spring-boot-web-thymeleaf\spring-boot-web-thymeleaf\src\main\java\com\mkyong\config\ElasticConfiguration.java

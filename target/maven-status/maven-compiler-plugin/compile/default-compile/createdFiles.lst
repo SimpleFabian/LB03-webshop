@@ -1,2 +1,6 @@
-com\mkyong\WelcomeController.class
+com\mkyong\repository\ArtikelConverter$1.class
+com\mkyong\model\Artikel.class
 com\mkyong\SpringBootWebApplication.class
+com\mkyong\model\ElasticSearchEntity.class
+com\mkyong\repository\ArtikelConverter.class
+com\mkyong\config\ElasticConfiguration.class

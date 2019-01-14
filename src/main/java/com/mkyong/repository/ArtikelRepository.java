@@ -40,4 +40,41 @@ public class ArtikelRepository {
     	return new ArrayList();
     }
 
+    public List<ElasticSearchEntity<Artikel>> getArtikelById(int id){
+    	try {
+    		SearchRequest searchRequest = new SearchRequest("webshop");
+    		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+    		searchSourceBuilder.query(QueryBuilders.matchQuery("_id", id));
+    		searchRequest.source(searchSourceBuilder);
+
+    		SearchResponse searchResponse;
+			searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+	    	return new ArtikelConverter().getElasticSearchEntities(searchResponse);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return new ArrayList();
+    }
+
+    public List<ElasticSearchEntity<Artikel>> getWarenkorb(ArrayList warenkorbItems){
+    	try {
+    		SearchRequest searchRequest = new SearchRequest("webshop");
+    		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+    		for(int i = 0; warenkorbItems.size() <= i; i++){
+				searchSourceBuilder.query(QueryBuilders.matchQuery("_id", warenkorbItems.get(i)));
+			}
+    		searchRequest.source(searchSourceBuilder);
+
+    		SearchResponse searchResponse;
+			searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+	    	return new ArtikelConverter().getElasticSearchEntities(searchResponse);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return new ArrayList();
+    }
+
 }

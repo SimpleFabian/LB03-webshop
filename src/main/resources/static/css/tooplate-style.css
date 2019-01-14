@@ -792,6 +792,12 @@ http://www.tooplate.com/view/2106-soft-landing
   }
 
 
+.produktbild{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
   @media screen and (max-width: 480px) {
 
     .online-form input[type="email"],
