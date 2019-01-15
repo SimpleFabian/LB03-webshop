@@ -17,7 +17,7 @@ public class ArtikelConverter {
 		
 	}
 
-	
+	// Get the Elasticsearch entities
 	public List<ElasticSearchEntity<Artikel>> getElasticSearchEntities(SearchResponse searchResponse) throws java.io.IOException {
 		SearchHits searchHits = searchResponse.getHits();
 		SearchHit[] hits = searchHits.getHits();

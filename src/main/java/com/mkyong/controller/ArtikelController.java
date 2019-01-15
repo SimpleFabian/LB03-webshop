@@ -8,14 +8,11 @@ import com.mkyong.model.Artikel;
 import com.mkyong.model.ElasticSearchEntity;
 import com.mkyong.repository.ArtikelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ArtikelController {
@@ -23,8 +20,10 @@ public class ArtikelController {
 	@Autowired
 	ArtikelRepository artikelRepository;
 
+	//List for the cart
 	private ArrayList warenkorbItems = new ArrayList();
 
+	//home page call
 	@RequestMapping("/")
 	public String listArtikel(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
 
@@ -32,11 +31,12 @@ public class ArtikelController {
 
 		model.put("articles", artikelList);
 
-		return "index2";
+		return "index";
 	}
 
+	//produkte page call
 	@RequestMapping("/produkte")
-	public String ArtikelList(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
+	public String artikelList(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
 
 		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getArtikels();
 
@@ -45,34 +45,54 @@ public class ArtikelController {
 		return "produkte";
 	}
 
-	@RequestMapping("/produkt")
-	public String ArtieklById(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
+	//single produkt page call
+	@RequestMapping("/produkt/{id}")
+	public String artieklById(@PathVariable int id, Map<String, List<ElasticSearchEntity<Artikel>>> model) {
 
-		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getArtikelById(1);
+		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getArtikelById(id);
 
 		model.put("article", artikelList);
 
 		return "produkt";
 	}
 
+	//cart call
 	@RequestMapping("/warenkorb")
-	public String Warenkorb(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
+	public String warenkorb(Map<String, List<ElasticSearchEntity<Artikel>>> model) {
 
 		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getWarenkorb(warenkorbItems);
 
 		model.put("articles", artikelList);
 
-		return "warenkorb";
+		if(artikelList.size() >= 1){
+			return "warenkorb";
+		}else{
+			return "leererWarenkorb";
+		}
 	}
 
-	@RequestMapping(value={"produkt/add/{id}"})
-	public String acceptOffer(@PathVariable String id, Map<String, List<ElasticSearchEntity<Artikel>>> model){
+	//adding produkt to cart call
+	@RequestMapping(value={"/add/{id}"})
+	public String acceptOffer(@PathVariable int id, Map<String, List<ElasticSearchEntity<Artikel>>> model){
 		warenkorbItems.add(id);
-		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getArtikelById(1);
+		List<ElasticSearchEntity<Artikel>> artikelList = artikelRepository.getArtikelById(id);
 
 		model.put("article", artikelList);
 		model.put("warenkorbItems", warenkorbItems);
 		return "produkt";
+	}
+
+	//bestellen call
+	@RequestMapping(value={"/bestellen"})
+	public String bestellen(){
+		warenkorbItems = new ArrayList();
+		return "dankesSeite";
+	}
+
+	//login page call
+	@RequestMapping(value={"/login"})
+	public String login(){
+		return "login";
 	}
 
 }

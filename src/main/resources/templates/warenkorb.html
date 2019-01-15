@@ -2,30 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Soft Landing Page by Tooplate</title>
+    <title>Webshop Fabian Beerli</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
-          href="../static/css/bootstrap.min.css" />
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" th:href="@{/css/tooplate-style.css}"
-          href="../../css/tooplate-style.css" />
+          href="../../css/tooplate-style.css"/>
 
     <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}"
-          href="../../css/owl.theme.default.min.css" />
+          href="../../css/owl.theme.default.min.css"/>
 
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
-          href="../../css/font-awesome.min.css" />
+          href="../../css/font-awesome.min.css"/>
 
     <link rel="stylesheet" th:href="@{/css/owl.carousel.css}"
-          href="../../css/owl.carousel.css" />
+          href="../../css/owl.carousel.css"/>
 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
-          href="../../css/bootstrap.min.css" />
+          href="../../css/bootstrap.min.css"/>
 </head>
 <body>
 
@@ -41,7 +38,7 @@
             </button>
 
             <!-- lOGO TEXT HERE -->
-            <a href="index.html" class="navbar-brand">Fabian Beerli</a>
+            <a href="/" class="navbar-brand">Fabian Beerli</a>
         </div>
 
         <!-- MENU LINKS -->
@@ -51,14 +48,13 @@
                 <li><a href="/produkte" class="smoothScroll">Produkte</a></li>
                 <li><a href="/warenkorb" class="smoothScroll">Warnkorb</a></li>
                 <li><a href="/login" class="smoothScroll">Log in</a></li>
-                <li><a href="/contact" class="smoothScroll">Contact</a></li>
             </ul>
         </div>
 
     </div>
 </section>
 
-<!-- FEATURE -->
+<!-- Warenkorb -->
 <section id="feature" data-stellar-background-ratio="0.5">
     <div class="container">
 
@@ -73,6 +69,7 @@
             <tbody>
             <tr th:each="article, rowStat: ${articles}"
                 th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                <td><img th:src="${article._source.img}" th:width="80px"/></td>
                 <td th:text="${article._source.name}"></td>
                 <td th:text="${article._source.preis}"></td>
             </tr>
@@ -80,62 +77,20 @@
         </table>
         <div class="row">
 
-            <div class="col-md-6 col-sm-6">
-                <div class="feature-image" style="padding-bottom: 140px;">
-                    <img th:src="${articles[0]._source.img}" class="produktbild" alt="Thin Laptop"/>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"  th:text="${articles[0]._source.kuenstler}"></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab01" role="tabpanel">
-                        <div class="tab-pane-item">
-                            <h2 th:text="'CHF ' + ${articles[0]._source.preis}"></h2>
-                        </div>
-                        <div class="tab-pane-item">
-                            <h1 th:text="${articles[0]._source.name}"></h1>
-                            <p th:text="${articles[0]._source.beschreibung}"></p>
-                        </div>
-                        <form action="/produkt/add/1" method="get" class="online-form">
-                            <button type="submit" class="form-control">hinzufügen</button>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
 
         <div class="row">
 
             <div class="col-md-6 col-sm-6">
-                <div class="feature-image" style="padding-bottom: 140px;">
-                    <img th:src="${articles[0]._source.img}" class="produktbild" alt="Thin Laptop"/>
-                </div>
+                <p>Loing feature comming soon!</p>
             </div>
 
             <div class="col-md-6 col-sm-6">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"  th:text="${articles[1]._source.kuenstler}"></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab01" role="tabpanel">
-                        <div class="tab-pane-item">
-                            <h2 th:text="'CHF ' + ${articles[1]._source.preis}"></h2>
-                        </div>
-                        <div class="tab-pane-item">
-                            <h1 th:text="${articles[1]._source.name}"></h1>
-                            <p th:text="${articles[1]._source.beschreibung}"></p>
-                        </div>
-                        <form action="/produkt/add/1" method="get" class="online-form">
-                            <button type="submit" class="form-control">hinzufügen</button>
-                        </form>
-                    </div>
+                <div class="tab-pane active" id="tab01" role="tabpanel">
+                    <h5>Klicken sie auf "Bestellen" um ihren Auftrag zu bestätigen.</h5>
+                    <form action="/bestellen" method="get" class="online-form">
+                        <button type="submit" class="form-control">Bestellen</button>
+                    </form>
                 </div>
 
             </div>
@@ -145,17 +100,15 @@
 </section>
 
 
-
-
 <!-- FOOTER -->
 <footer id="footer" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
 
             <div class="copyright-text col-md-12 col-sm-12">
-                <div class="col-md-6 col-sm-6">
-                    <p>Copyright &copy; 2018 Company Name - Design:
-                        <a rel="nofollow" href="/">Fabian Beerli</a></p>
+                <div class="col-md-6 col-sm-6"
+                     style="position: absolute; margin: auto; top:0; bottom: 0; left: 0; right: 0;">
+                    <p>Copyright &copy; 2018 Fabian Beerli</p>
                 </div>
             </div>
 
