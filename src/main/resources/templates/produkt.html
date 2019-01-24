@@ -6,9 +6,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-
+    <!-- css ist von einer CSS bibloithek -->
     <link rel="stylesheet" th:href="@{/css/tooplate-style.css}"
           href="../../css/tooplate-style.css"/>
 
@@ -37,7 +35,7 @@
                 <span class="icon icon-bar"></span>
             </button>
 
-            <!-- lOGO TEXT HERE -->
+            <!-- lOGO TEXT -->
             <a href="/" class="navbar-brand">Fabian Beerli</a>
         </div>
 
@@ -86,6 +84,9 @@
                         </form>
                     </div>
                 </div>
+                <form action="/warenkorb" class="online-form">
+                    <button type="submit" class="form-control" style="margin-top: 60px;">Zum Warenkorb</button>
+                </form>
 
             </div>
 
@@ -95,7 +96,7 @@
 
 
 <!-- FOOTER -->
-<footer id="footer" data-stellar-background-ratio="0.5">
+<footer id="footer" data-stellar-background-ratio="0.5" style="margin-top: 30px;">
     <div class="container">
         <div class="row">
 
@@ -110,13 +111,5 @@
     </div>
 </footer>
 
-
-<!-- SCRIPTS -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/custom.js"></script>
 </body>
 </html>

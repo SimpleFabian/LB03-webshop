@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 
+//Entity für die ElasticSearch DB
 public class ElasticSearchEntity<T> {
 
 	@Getter

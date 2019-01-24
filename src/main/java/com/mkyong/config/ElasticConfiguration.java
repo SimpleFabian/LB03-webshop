@@ -12,7 +12,8 @@ public class ElasticConfiguration {
     
     @Bean
 	ArtikelRepository artikelRepository() { return new ArtikelRepository();}
-	
+
+	//Konfiguration des Ports für die DB
 	@Bean
 	RestHighLevelClient initRestHighLevelClient(){
 		return new RestHighLevelClient(RestClient.builder(new HttpHost("localhost", 9200, "http")));

@@ -1,5 +1,6 @@
 package com.mkyong.model;
 
+//Model Klasse
 public class Artikel {
 
     private String name;
@@ -10,6 +11,7 @@ public class Artikel {
     private double preis;
 
 
+    //Getter und Setter
     public String getName() {
         return name;
     }
